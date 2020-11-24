@@ -8,8 +8,13 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
         <link href="/css/normalize.css" rel="stylesheet">
+        <link href="/css/index.css" rel="stylesheet">
+        <link href="/css/jquery-ui.min.css" rel="stylesheet">
+        <link href="/css/jquery-ui.structure.min.css" rel="stylesheet">
+
+        <script src="/js/jquery-3.5.1.min.js"></script>
+        <script src="/js/jquery-ui.min.js"></script>
 
         <style>
             body {
@@ -19,5 +24,6 @@
     </head>
     <body class="antialiased">
         @yield('content', 'This is some content')
+        @yield('js')
     </body>
 </html>

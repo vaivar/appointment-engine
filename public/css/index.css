@@ -1,0 +1,25 @@
+.dateFilled a.ui-state-default{
+    background: #4ca020;
+}
+.dateFilled a.ui-state-hover{
+    background: #43901b;
+}
+a.ui-state-active{
+    background: #007fff !important;
+    color: #fff !important;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 2px 10px;
+}
+td {
+    text-align: left;
+    
+}
+#timeslots tr:nth-child(odd) td {
+    background-color: hsl(0, 0%, 80%);
+}
+#timeslots tr:nth-child(even) td{
+    background-color: hsl(0, 0%, 90%);
+}

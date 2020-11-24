@@ -17,9 +17,10 @@ class CreateTimetablesTable extends Migration
             $table->id();
             $table->integer('slots_total');
             $table->integer('slots_occupied');
-            $table->date('date');
-            $table->time('time', 0);
-            $table->foreignId('user_id');
+            $table->string('date', 10);
+            $table->string('time', 5);
+            $table->foreignId('salon_id');
+            $table->foreignId('admin_id');
             $table->timestamps();
         });
     }
