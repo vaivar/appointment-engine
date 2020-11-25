@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class TimetableController extends Controller
 {
-    public function defaultEntry(Request $request) {
+    public function get(Request $request) {
         return redirect('timetable/' . date("Y-m-d"));
     }
 
@@ -36,6 +36,7 @@ class TimetableController extends Controller
     public function new(Request $request, $date) {
         if(checkdate(intval(substr($date, 5, 2)), intval(substr($date, 8, 2)), intval(substr($date, 0, 4)))) {
             $params = [
+                'defaultDate' => $date,
                 'salons' => \App\Models\Salon::all()
             ];
             return view('timeslot', $params);
@@ -52,16 +53,50 @@ class TimetableController extends Controller
                 $timeslot->slots_total = $request->input('slots');
                 $timeslot->date = $date;
                 $timeslot->time = $time;
+                $timeslot->salon_id = $request->input('salon');
                 $timeslot->admin_id = Auth::id();
                 $timeslot->save();
             }
+            return $this->manage($request, $date);
+        } else {
+            return redirect('timetable/' . date("Y-m-d"));
+        }
+    }
+
+    public function delete(Request $request, $date, $id) {
+        if(checkdate(intval(substr($date, 5, 2)), intval(substr($date, 8, 2)), intval(substr($date, 0, 4)))) {
+            \App\Models\Timeslot::destroy($id);
+            return $this->manage($request, $date);
+        } else {
+            return redirect('timetable/' . date("Y-m-d"));
+        }
+    }
+
+    public function edit(Request $request, $date, $id) {
+        if(checkdate(intval(substr($date, 5, 2)), intval(substr($date, 8, 2)), intval(substr($date, 0, 4)))) {
+            $timeslot = \App\Models\Timeslot::find($id);
             $params = [
-                'defaultDate' => $date,
+                'defaultDate' => $timeslot->date,
                 'salons' => \App\Models\Salon::all(),
-                'selectedSalon' => '0',
-                'status' => 'Sėkmingai įrašyta'
+                'selectedSalon' => $timeslot->salon_id,
+                'slots' => $timeslot->slots_total,
+                'time' => $timeslot->time
             ];
-            return view('timetable', $params);
+            return view('timeslot', $params);
+        } else {
+            return redirect('timetable/' . date("Y-m-d"));
+        }
+    }
+
+    public function editSubmit(Request $request, $date, $id) {
+        if(checkdate(intval(substr($date, 5, 2)), intval(substr($date, 8, 2)), intval(substr($date, 0, 4)))) {
+            $timeslot = \App\Models\Timeslot::find($id);
+            $timeslot->slots_total = $request->input('slots');
+            $timeslot->time = $request->input('times');
+            $timeslot->salon_id = $request->input('salon');
+            $timeslot->admin_id = Auth::id();
+            $timeslot->save();
+            return $this->manage($request, $date);
         } else {
             return redirect('timetable/' . date("Y-m-d"));
         }

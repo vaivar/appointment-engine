@@ -26,7 +26,7 @@
         <td>{{ $timeslot->time }}</td>
         <td>{{ $timeslot->slots_occupied }}</td>
         <td>{{ $timeslot->slots_total }}</td>
-        <td><button onclick="view({{ $timeslot->id }})">Susitikimai</button>&nbsp;<button onclick="edit({{ $timeslot->id }})">Redaguoti</button></td>
+        <td><button onclick="view({{ $timeslot->id }})">Susitikimai</button>&nbsp;<button onclick="edit({{ $timeslot->id }})">Redaguoti</button>&nbsp;<button onclick="remove({{ $timeslot->id }})" @if($timeslot->slots_occupied > 0) disabled @endif>Pašalinti</button></td>
     </tr> 
     @endforeach
 </table>
@@ -59,5 +59,14 @@ function extractDateString(date){
 $('#salons').change(function() {
     window.location.href = '/timetable/' + selectedDate + "/" + $(this).val().toString();
 })
+function addTimeslot() {
+    window.location.href = '/timeslot/' + selectedDate + "/new";
+}
+function edit(id) {
+    window.location.href = '/timeslot/' + selectedDate + "/" + id + "/edit";
+}
+function remove(id) {
+    window.location.href = '/timeslot/' + selectedDate + "/" + id + "/delete";
+}
 </script>
 @endsection
