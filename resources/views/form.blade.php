@@ -33,12 +33,15 @@
         </select>
     </p>
     <p>
-        <label for="times" style="vertical-align:top;">Jūsų žinutė:</label>
-        <textarea name="times" rows="4" cols="50"></textarea>
+        <label for="message" style="vertical-align:top;">Jūsų žinutė:</label>
+        <textarea name="message" rows="4" cols="50"></textarea>
     </p>
     @honeypot
     <button type="submit">Siųsti užklausą</button>
 </form>
+@foreach ($errors->all() as $error)
+<p>{{ $error }}</p>
+@endforeach
 @if(!empty($status))
 <p>{{ $status }}</p>
 @endif

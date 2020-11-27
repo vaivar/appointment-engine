@@ -26,7 +26,7 @@
         <td>{{ $timeslot->time }}</td>
         <td>{{ $timeslot->slots_occupied }}</td>
         <td>{{ $timeslot->slots_total }}</td>
-        <td><button onclick="view({{ $timeslot->id }})">Susitikimai</button>&nbsp;<button onclick="edit({{ $timeslot->id }})">Redaguoti</button>&nbsp;<button onclick="remove({{ $timeslot->id }})" @if($timeslot->slots_occupied > 0) disabled @endif>Pašalinti</button></td>
+        <td><button onclick="edit({{ $timeslot->id }})">Redaguoti</button>&nbsp;<button onclick="remove({{ $timeslot->id }})" @if($timeslot->slots_occupied > 0) disabled @endif>Pašalinti</button></td>
     </tr> 
     @endforeach
 </table>

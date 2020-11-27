@@ -12,8 +12,6 @@ class Salon extends Model
     protected $table = 'salons';
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'address'
     ];
 }
