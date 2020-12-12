@@ -1,0 +1,29 @@
+.DS_Store
+
+# Compiled binary addons
+bin/
+
+# images and uploads
+images/
+
+# Logs
+logs/
+*.log
+
+# test coverage
+tests/
+
+# Runtime data
+tmp/
+
+# Vendor directory
+vendor/
+
+# Dependency directories
+node_modules/
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env

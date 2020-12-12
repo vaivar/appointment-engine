@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'Muli';
+  src: url("../fonts/Muli-Light.eot");
+  src: url("../fonts/Muli-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Muli-Light.woff2") format("woff2"), url("../fonts/Muli-Light.woff") format("woff"), url("../fonts/Muli-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Muli';
+  src: url("../fonts/Muli-ExtraBold.eot");
+  src: url("../fonts/Muli-ExtraBold.eot?#iefix") format("embedded-opentype"), url("../fonts/Muli-ExtraBold.woff2") format("woff2"), url("../fonts/Muli-ExtraBold.woff") format("woff"), url("../fonts/Muli-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal; }
+@font-face {
+  font-family: 'Muli';
+  src: url("../fonts/Muli-Regular.eot");
+  src: url("../fonts/Muli-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Muli-Regular.woff2") format("woff2"), url("../fonts/Muli-Regular.woff") format("woff"), url("../fonts/Muli-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Muli';
+  src: url("../fonts/Muli-ExtraBoldItalic.eot");
+  src: url("../fonts/Muli-ExtraBoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/Muli-ExtraBoldItalic.woff2") format("woff2"), url("../fonts/Muli-ExtraBoldItalic.woff") format("woff"), url("../fonts/Muli-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic; }
+
+@font-face {
+    font-family: 'Muli';
+    src: url("../fonts/Muli-Italic.eot");
+    src: url("../fonts/Muli-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/Muli-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic; }
+  
+@font-face {
+  font-family: 'Muli';
+  src: url("../fonts/Muli-BlackItalic.eot");
+  src: url("../fonts/Muli-BlackItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/Muli-BlackItalic.woff2") format("woff2"), url("../fonts/Muli-BlackItalic.woff") format("woff"), url("../fonts/Muli-BlackItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Muli';
+  src: url("../fonts/Muli-Bold.eot");
+  src: url("../fonts/Muli-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Muli-Bold.woff2") format("woff2"), url("../fonts/Muli-Bold.woff") format("woff"), url("../fonts/Muli-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+form {
+  font-family: 'Muli';
+  width: 97%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+input, select, label {
+  display: block;
+  font-family: inherit;
+}
+
+input, select {
+font-size: 1.1em;
+padding-left: 1em;
+}
+
+form div {
+  padding-top: 15px;
+}
+
+button.rounded-rectangle {
+  color: #fff;
+  background: #b98a77;
+}
+
+select.rounded-rectangle {
+  width: 340px;
+}
+.rounded-rectangle {
+  height: 42px;
+  margin: 12px 0 0;
+  width: 320px;
+  border: 1px solid rgba(167, 167, 167, 0.23); /*stroke*/
+  -webkit-border-radius: 21px;
+  -moz-border-radius: 21px;
+  border-radius: 21px;
+  background: #ffffff;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box; /*Will not allow bg color to leak outside borders*/
+  -webkit-box-shadow: 1px 1.732051px 9.5px 0.5px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 1px 1.732051px 9.5px 0.5px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 1.732051px 9.5px 0.5px rgba(0, 0, 0, 0.05); /*drop shadow*/
+}
+
+textarea {
+  width: 90vw;
+  border: 1px solid rgba(167, 167, 167, 0.23); /*stroke*/
+  -webkit-border-radius: 21px;
+  -moz-border-radius: 21px;
+  border-radius: 21px;
+  padding: 1em;
+}
+
+textarea:focus, input:focus {
+  outline: 0;
+}

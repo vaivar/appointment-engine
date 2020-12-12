@@ -2,42 +2,49 @@
 
 @section('content')
 <form action="" method="post">
-    <p>
+    <div>
         <label for="name">Vardas, Pavardė</label>
-        <input type="text" name="name"></input>
-    </p>
-    <p>
+        <input class="rounded-rectangle" type="text" name="name"></input>
+    </div>
+    <div>
         <label for="phone">Mob. telefonas</label>
-        <input type="text" name="phone"></input>
-    </p>
-    <p>
+        <input class="rounded-rectangle" type="text" name="phone"></input>
+    </div>
+    <div>
         <label for="email">El. paštas</label>
-        <input type="text" name="email"></input>
-    </p>
-    <p>
-        <label for="salon">Salonas</label>
-        <select name="salon" id="salon" onchange="getDates()">
+        <input class="rounded-rectangle" type="text" name="email"></input>
+    </div>
+    <div>
+      <label for="date">Susitikimo data</label>
+      <input
+        id="datepicker"
+        class="rounded-rectangle"
+        type="text"
+        name="date"
+        placeholder="Pasirinkite susitikimo datą"
+      >
+      </input>
+    </div>
+    <div>
+        <label for="time">Siūlomas susitikimo laikas</label>
+        <select class="rounded-rectangle" name="time" id="time">
+            <option value="">--:--</option>
+        </select>
+    </div>
+    <div>
+        <label for="salon">BTN Salonas</label>
+        <select class="rounded-rectangle" name="salon" id="salon" onchange="getDates()">
         @foreach($salons as $salon)
             <option value="{{$salon->id}}">{{$salon->address}}</option>
         @endforeach
         </select>
-    </p>
-    <p>
-        <label for="date">Data</label>
-        <input type="text" name="date" id="datepicker"></input>
-    </p>
-    <p>
-        <label for="time">Laikas</label>
-        <select name="time" id="time">
-            <option value="">--:--</option>
-        </select>
-    </p>
-    <p>
+    </div>
+    <div>
         <label for="message" style="vertical-align:top;">Jūsų žinutė:</label>
-        <textarea name="message" rows="4" cols="50"></textarea>
-    </p>
+        <textarea name="message" rows="5"></textarea>
+    </div>
     @honeypot
-    <button type="submit">Siųsti užklausą</button>
+    <button class="rounded-rectangle" type="submit">Siųsti užklausą</button>
 </form>
 @foreach ($errors->all() as $error)
 <p>{{ $error }}</p>
