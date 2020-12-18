@@ -7,7 +7,7 @@
         <input type="text" value="{{ $defaultDate }}" disabled>
     </p>
     <p>
-        <label for="salon">Salonas:</label>
+        <label for="salon">BTN Specialistas:</label>
         <select name="salon">
         @foreach($salons as $salon)
             <option value="{{$salon->id}}" @if($salon->id === ($selectedSalon ?? '')) selected="selected" @endif>{{$salon->address}}</option>

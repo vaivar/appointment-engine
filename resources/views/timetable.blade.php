@@ -3,7 +3,7 @@
 @section('content')
 <div id="datepicker"></div>
 <p>
-    <label for="salons">Salonas:</label>
+    <label for="salons">BTN specialistas:</label>
     <select name="salons" id="salons">
         <option value="0" @if($selectedSalon === '0') selected="selected" @endif>Visi</option>
     @foreach($salons as $salon)
@@ -14,7 +14,7 @@
 <p>
 <table id="timeslots">
     <tr>
-        <th>Salonas</th>
+        <th>BTN specialistas</th>
         <th>Laikas</th>
         <th>Užimtos vietos</th>
         <th>Vietos</th>

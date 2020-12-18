@@ -26,13 +26,7 @@
       </input>
     </div>
     <div>
-        <label for="time">Siūlomas susitikimo laikas</label>
-        <select class="rounded-rectangle" name="time" id="time">
-            <option value="">--:--</option>
-        </select>
-    </div>
-    <div>
-        <label for="salon">BTN Salonas</label>
+        <label for="salon">Pasirinkite BTN specialistą</label>
         <select class="rounded-rectangle" name="salon" id="salon" onchange="getDates()">
         @foreach($salons as $salon)
             <option value="{{$salon->id}}">{{$salon->address}}</option>
@@ -40,11 +34,17 @@
         </select>
     </div>
     <div>
+        <label for="time">Siūlomas susitikimo laikas</label>
+        <select class="rounded-rectangle" name="time" id="time">
+            <option value="">--:--</option>
+        </select>
+    </div>
+    <div>
         <label for="message" style="vertical-align:top;">Jūsų žinutė:</label>
         <textarea name="message" rows="5"></textarea>
     </div>
     @honeypot
-    <button class="rounded-rectangle" type="submit">Siųsti užklausą</button>
+    <button class="rounded-rectangle" type="submit">Registruotis konsultacijai</button>
 </form>
 @foreach ($errors->all() as $error)
 <p>{{ $error }}</p>

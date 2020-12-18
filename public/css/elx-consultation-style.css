@@ -74,13 +74,17 @@ button.rounded-rectangle {
   background: #b98a77;
 }
 
+button.rounded-rectangle:hover {
+  background: rgb(167, 111, 86);
+}
+
 select.rounded-rectangle {
-  width: 340px;
+  width: 330px;
 }
 .rounded-rectangle {
   height: 42px;
   margin: 12px 0 0;
-  width: 320px;
+  width: 310px;
   border: 1px solid rgba(167, 167, 167, 0.23); /*stroke*/
   -webkit-border-radius: 21px;
   -moz-border-radius: 21px;
