@@ -15,6 +15,14 @@
         <input class="rounded-rectangle" type="text" name="email"></input>
     </div>
     <div>
+        <label for="salon">Pasirinkite BTN specialistą</label>
+        <select class="rounded-rectangle" name="salon" id="salon" onchange="getDates()">
+        @foreach($salons as $salon)
+            <option value="{{$salon->id}}">{{$salon->address}}</option>
+        @endforeach
+        </select>
+    </div>
+    <div>
       <label for="date">Susitikimo data</label>
       <input
         id="datepicker"
@@ -24,14 +32,6 @@
         placeholder="Pasirinkite susitikimo datą"
       >
       </input>
-    </div>
-    <div>
-        <label for="salon">Pasirinkite BTN specialistą</label>
-        <select class="rounded-rectangle" name="salon" id="salon" onchange="getDates()">
-        @foreach($salons as $salon)
-            <option value="{{$salon->id}}">{{$salon->address}}</option>
-        @endforeach
-        </select>
     </div>
     <div>
         <label for="time">Siūlomas susitikimo laikas</label>

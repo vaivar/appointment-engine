@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +39,8 @@ Route::get('/timeslot/{date}/{id}/delete', [TimetableController::class, 'delete'
 Route::get('/timeslot/{date}/{id}/edit', [TimetableController::class, 'edit'])->middleware('auth');
 Route::post('/timeslot/{date}/{id}/edit', [TimetableController::class, 'editSubmit'])->middleware('auth');
 
-
 Route::get('/appointments', [AppointmentController::class, 'get'])->middleware('auth');
 Route::get('/appointments/{date}/{salon?}', [AppointmentController::class, 'manage'])->middleware('auth');
 Route::get('/appointments/{date}/{id}/delete', [AppointmentController::class, 'delete'])->middleware('auth');
 
+Route::get('/send-email', [MailController::class, 'sendEmail']);
