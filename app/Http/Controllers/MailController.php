@@ -9,12 +9,21 @@ use Symfony\Component\HttpFoundation\Response;
 
 class MailController extends Controller
 {
-  public function sendEmail() {
+  public function sendEmail(Request $request) {
+
+    // error_reporting(E_ALL);
+    // var_dump(fsockopen("ssl://smtp.gmail.com", 465, $errno, $errstr));
+    // var_dump($errno);
+    // var_dump($errstr); die();
+
     $to_email = 'vaidas@vaivar.eu';
 
     $mailData = [
       'title' => 'Jūs užsiregistravote konsultacijai BTN',
-      'url' => 'https://www.btn.lt'
+      'url' => 'https://www.btn.lt',
+      'client' => 'Test Client',
+      'date' => 'Date',
+      'time' => 'Time',
     ];
 
     Mail::to($to_email)->send(new BookingOk($mailData));

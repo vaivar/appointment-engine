@@ -1,12 +1,16 @@
 @component('mail::message')
 # {{ $mailData['title'] }}
 
-The body of your message.
+Šiuo laišku maloniai pranešame, kad {{ $mailData['client'] }}<br>
+užsiregistravo individualiai, nuotolinei konsultacijai su BTN specialistu.
+
+Konsultacijos data: {{ $mailData['date'] }}.<br>
+Konsultacijos pradžia: {{ $mailData['time'] }}.
 
 @component('mail::button', ['url' => $mailData['url']])
-Button Text
+Į BTN Saloną
 @endcomponent
 
-Thanks,<br>
+Iki pasimatymo,<br>
 {{ config('app.name') }}
 @endcomponent

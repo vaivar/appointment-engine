@@ -28,7 +28,8 @@ class BookingOk extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.booking-received')
-				->with('mailData', $this->mailData);
+        return $this->subject('Jūsų registracija BTN')
+                    ->markdown('emails.booking-received')
+			        ->with('mailData', $this->mailData);
     }
 }

@@ -3,10 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookingOk;
+// use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
 
 class FormController extends Controller
 {
+  private function _sendEmail($forEmail = null) {
+    // $to_email = $forEmail->email;	// production
+    $to_email = 'it.nordija@outlook.com';	// staging
+
+    $mailData = [
+      'title' => 'Jūs užsiregistravote konsultacijai BTN',
+      'url' => 'https://www.btn.lt',
+      'client' => $forEmail->full_name,
+      'date' => $forEmail->date,
+      'time' => $forEmail->time,
+    ];
+
+    Mail::to($to_email)->send(new BookingOk($mailData));
+
+    return;
+    // return response()->json([
+    //   'message' => 'Email has been sent'
+    // ], Response::HTTP_OK);
+  }
+
     public function get(Request $request) {
         $salons = $this->getSalons();
         $dates = $this->getDatesForSalon($salons[0]->id);
@@ -42,9 +65,13 @@ class FormController extends Controller
                 $appointment->save();
                 $timeslot->slots_occupied += 1;
                 $timeslot->save();
+                $appointment['date'] = $timeslot->date;
+                $appointment['time'] = $timeslot->time;
+                $this->_sendEmail($appointment); // send an email to the client   
+                // send an email to the consultant
                 $params['status'] = 'Sėkmingai išsiųsta';
             } else {
-                $params['status'] = 'Klaida';
+                $params['status'] = 'Atsiprašome, šį laiką ką tik užėmė';
             }
         } else {
             $params['status'] = 'Klaida';
