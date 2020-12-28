@@ -17,8 +17,11 @@
     <div>
         <label for="salon">Pasirinkite BTN specialistą</label>
         <select class="rounded-rectangle" name="salon" id="salon" onchange="getDates()">
+        <option value="all">Man svarbiau data ir laikas</option>
         @foreach($salons as $salon)
-            <option value="{{$salon->id}}">{{$salon->address}}</option>
+            @if($salon->id != '5')
+                <option value="{{$salon->id}}">{{$salon->address}}</option>
+            @endif
         @endforeach
         </select>
     </div>

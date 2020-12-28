@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\DB;
 class FormController extends Controller
 {
   private function _sendEmail($forEmail = null) {
-    // $to_email = $forEmail->email;	// production
-    $to_email = 'it.nordija@outlook.com';	// staging
+	$to_email = ['edita@btn.lt', 'arunas@btn.lt', 'andrius.rotar@btn.lt', 'ilda.jancis@electrolux.com'];	// email recipients at btn
+    $to_email[] = $forEmail->email;	// production
+    //$to_email = 'avavaus@gmail.com';	// staging
 
     $mailData = [
       'title' => 'Jūs užsiregistravote konsultacijai BTN',
@@ -67,8 +68,7 @@ class FormController extends Controller
                 $timeslot->save();
                 $appointment['date'] = $timeslot->date;
                 $appointment['time'] = $timeslot->time;
-                $this->_sendEmail($appointment); // send an email to the client   
-                // send an email to the consultant
+                $this->_sendEmail($appointment); // send an email to the client and btn
                 $params['status'] = 'Sėkmingai išsiųsta';
             } else {
                 $params['status'] = 'Atsiprašome, šį laiką ką tik užėmė';
