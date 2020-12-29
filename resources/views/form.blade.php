@@ -3,25 +3,23 @@
 @section('content')
 <form action="" method="post">
     <div>
-        <label for="name">Vardas, Pavardė</label>
+        <label for="name">Vardas, Pavardė (g.b. pseudonimas)</label>
         <input class="rounded-rectangle" type="text" name="name"></input>
     </div>
     <div>
-        <label for="phone">Mob. telefonas</label>
+        <label for="phone">Telefono nr. (nebūtina, bet būtų patogiau)</label>
         <input class="rounded-rectangle" type="text" name="phone"></input>
     </div>
     <div>
-        <label for="email">El. paštas</label>
+        <label for="email">El. paštas (atsiųsime patvirtinimą)</label>
         <input class="rounded-rectangle" type="text" name="email"></input>
     </div>
     <div>
         <label for="salon">Pasirinkite BTN specialistą</label>
         <select class="rounded-rectangle" name="salon" id="salon" onchange="getDates()">
-        <option value="all">Man svarbiau data ir laikas</option>
+        <option value="0">Visi</option>
         @foreach($salons as $salon)
-            @if($salon->id != '5')
-                <option value="{{$salon->id}}">{{$salon->address}}</option>
-            @endif
+            <option value="{{$salon->id}}">{{$salon->address}}</option>
         @endforeach
         </select>
     </div>
@@ -37,13 +35,13 @@
       </input>
     </div>
     <div>
-        <label for="time">Siūlomas susitikimo laikas</label>
+        <label for="time">Susitikimo laikas (pasirodys pasirinkus datą)</label>
         <select class="rounded-rectangle" name="time" id="time">
             <option value="">--:--</option>
         </select>
     </div>
     <div>
-        <label for="message" style="vertical-align:top;">Jūsų žinutė:</label>
+        <label for="message" style="vertical-align:top;">Konsultacijos tema: (būtinai parašykite - mums reikia pasiruošti)</label>
         <textarea name="message" rows="5"></textarea>
     </div>
     @honeypot
