@@ -49,13 +49,15 @@ class TimetableController extends Controller
         if(checkdate(intval(substr($date, 5, 2)), intval(substr($date, 8, 2)), intval(substr($date, 0, 4)))) {
             $times = explode(';', $request->input('times'));
             foreach($times as $time) {
-                $timeslot = new \App\Models\Timeslot;
-                $timeslot->slots_total = $request->input('slots');
-                $timeslot->date = $date;
-                $timeslot->time = $time;
-                $timeslot->salon_id = $request->input('salon');
-                $timeslot->admin_id = Auth::id();
-                $timeslot->save();
+                if ($time !=='') {
+                    $timeslot = new \App\Models\Timeslot;
+                    $timeslot->slots_total = $request->input('slots');
+                    $timeslot->date = $date;
+                    $timeslot->time = $time;
+                    $timeslot->salon_id = $request->input('salon');
+                    $timeslot->admin_id = Auth::id();
+                    $timeslot->save();
+                }
             }
             return $this->manage($request, $date);
         } else {

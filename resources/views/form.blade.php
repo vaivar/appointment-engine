@@ -24,7 +24,7 @@
         </select>
     </div>
     <div>
-      <label for="date">Susitikimo data</label>
+      <label for="date">Susitikimo data (artimiausia - {{$dates[0]->date}})</label>
       <input
         id="datepicker"
         class="rounded-rectangle"
@@ -70,12 +70,14 @@ $(function () {
            getTimes();
         },
         dateFormat: 'yy-mm-dd',
-        defaultDate: 0
+        defaultDate: dates[0],
     });
 });
 
 function extractDateString(date){
-    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    const day = ("0" + (date.getDate())).slice(-2);
+    return date.getFullYear() + "-" + month + "-" + day;
 }
 
 function getDates() {

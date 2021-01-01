@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\BookingOk;
 // use Symfony\Component\HttpFoundation\Response;
@@ -34,22 +35,37 @@ class FormController extends Controller
   }
 
     public function get(Request $request) {
-        $salons = $this->getSalons();
-        $dates = $this->getDates();
-        $params = [
-            'salons' => $salons,
-            'dates' => $dates,
-        ];
-        return view('form', $params);
+        $referrer = request()->headers->get('referer');
+        $referrer = true;
+        if ($referrer) {
+            $salons = $this->getSalons();
+            $dates = $this->getDates();
+            $params = [
+                'salons' => $salons,
+                'dates' => $dates,
+            ];
+            return view('form', $params);
+        }
+        die();
     }
 
     public function submit(Request $request) {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            // 'phone' => 'required|min:9|max:12',
             'email' => 'required|email|max:255',
-            'message' => 'required'
+            'message' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            $salons = $this->getSalons();
+            $dates = $this->getDates();
+            $params = [
+                'salons' => $salons,
+                'dates' => $dates,
+                'errors' => $validator->errors(),
+            ];
+            return view('form', $params);
+        }
 
         $params = [];
         $consultant = $request->input('salon');
